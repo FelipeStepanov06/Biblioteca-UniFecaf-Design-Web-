@@ -1,0 +1,386 @@
+/*
+   1. Variáveis, Cores Institucionais e Reset
+  */
+:root {
+  --azul-unifecaf: #003366; /* Cor Primária - Alto Contraste */
+  --laranja-unifecaf: #ff6600; /* Cor Secundária - Destaques/Ações */
+  --marrom-unifecaf: #8b4513; /* Cor Terciária - Elementos Secundários */
+
+  --cor-texto: #333333;
+  --cor-texto-claro: #ffffff;
+  --cor-fundo: #f8f9fa;
+  --cor-fundo-alt: #e9ecef;
+  --cor-borda: #dddddd;
+}
+
+/* Rolagem suave para os links âncora */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  overflow-x: hidden; /* Previne rolagem horizontal acidental */
+}
+
+/* Container Global */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/*
+   2. Cabeçalho e Navegação (Flexbox)
+ */
+header {
+  background-color: var(--azul-unifecaf);
+  color: var(--cor-texto-claro);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--cor-texto-claro);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--laranja-unifecaf);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: var(--cor-texto-claro);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--laranja-unifecaf);
+  outline: 2px dashed var(--laranja-unifecaf);
+  outline-offset: 4px;
+}
+
+/*
+   3. Seções, Tipografia e Componentes
+  */
+section {
+  padding: 80px 0;
+  /* Evita que o cabeçalho fixo cubra o título ao navegar pelos links */
+  scroll-margin-top: 80px;
+}
+
+h2 {
+  text-align: center;
+  color: var(--azul-unifecaf);
+  margin-bottom: 50px;
+  font-size: 2.2rem;
+}
+
+/* Seção: Sobre */
+.bg-alternativo {
+  background-color: var(--cor-fundo-alt);
+  border-bottom: 5px solid var(--laranja-unifecaf);
+  text-align: center;
+}
+
+.sobre-content h1 {
+  color: var(--azul-unifecaf);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.sobre-content p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Seção: Livros (CSS Grid) */
+.grid-livros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card-livro {
+  background-color: var(--cor-texto-claro);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-livro:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  border-color: var(--laranja-unifecaf);
+}
+
+.card-livro img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #ccc;
+}
+
+.card-livro h3 {
+  color: var(--azul-unifecaf);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card-livro .categoria {
+  color: var(--marrom-unifecaf);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Seção: Unidades (CSS Grid com Imagens) */
+.grid-unidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card-unidade {
+  background-color: var(--marrom-unifecaf);
+  color: var(--cor-texto-claro);
+  border-radius: 8px;
+  text-align: center;
+  border-bottom: 5px solid var(--laranja-unifecaf);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.card-unidade:hover {
+  transform: translateY(-8px);
+}
+
+.card-unidade img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  background-color: #ccc;
+}
+
+.unidade-info {
+  padding: 30px 20px;
+}
+
+.unidade-info h3 {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+/*
+   4. Rodapé e Contatos
+  */
+footer {
+  background-color: var(--azul-unifecaf);
+  color: var(--cor-texto-claro);
+  padding: 40px 0 20px 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.footer-contato h4 {
+  color: var(--laranja-unifecaf);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.contatos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.contato-polo {
+  font-style: normal;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 3px solid var(--laranja-unifecaf);
+}
+
+.contato-polo p {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.telefone-contato {
+  color: var(--laranja-unifecaf);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--cor-texto-claro);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--laranja-unifecaf);
+  text-decoration: underline;
+}
+
+/*
+   5. Responsividade (Media Queries)
+ */
+
+/* Desktop e Telas Maiores (>= 1024px) */
+@media (min-width: 1024px) {
+  .sobre-content h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Tablets (<= 768px) */
+@media (max-width: 768px) {
+  section {
+    padding: 50px 0; /* Reduz espaço ocioso vertical */
+    scroll-margin-top: 120px; /* Ajuste para o menu empilhado do tablet */
+  }
+
+  .sobre-content h1 {
+    font-size: 2rem; /* Evita quebra de palavras longas */
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Smartphones (<= 480px) */
+@media (max-width: 480px) {
+  section {
+    padding: 40px 0;
+    scroll-margin-top: 200px; /* Ajuste para o menu maior no celular */
+  }
+
+  .sobre-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .sobre-content p {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  /* Força os Grids para 1 única coluna no celular */
+  .grid-livros,
+  .grid-unidades,
+  .contatos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reduz a altura da imagem do livro para não ocupar toda a tela do celular */
+  .card-livro img {
+    height: 250px;
+  }
+
+  /* Organiza o final do rodapé em coluna */
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    padding: 5px;
+  }
+}
